@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main>
+        <header class="header">
+            <h1>Buat QR</h1>
+            <p>Simple app untuk generate QR code<br>Paste je link dekat bawah!</p>    
+        </header>
+
+        {{ if .error }}
+            <p class="notice">{{ .error }}</p>
+        {{ end }}
+        <form action="/generate" method="post">
+            <input type="text" name="link" id="link" placeholder="https://example.com">
+            <button type="submit">Generate</button>
+        </form>
+
+        {{ if .qrcode }}
+            <div class="qr">
+                <img src="data:image/png;base64,{{ .qrcode }}" alt="Generated QR Code">
+            </div>
+        {{ end }}
+    </main>
+    <footer>
+        <p>A toy project by <a href="https://faizmokh.com">@faizmokh</a></p>
+      </footer>
+</body>
+</html>
