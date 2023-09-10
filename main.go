@@ -56,7 +56,7 @@ func main() {
 		})
 	})
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
 
 func isValidURL(u string) bool {
